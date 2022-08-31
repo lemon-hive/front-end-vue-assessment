@@ -14,8 +14,23 @@
         {{getConfigData?.launcher?.ctaText}}
     </button>
 
+    <VueSlickCarousel v-bind="settings">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+    </VueSlickCarousel>
+
+    <b-list-group >
+      <b-list-group-item>Current Temparature: C</b-list-group-item>
+      <b-list-group-item>High: C</b-list-group-item>
+      <b-list-group-item>Low: C</b-list-group-item>
+      <b-list-group-item>Pressure: </b-list-group-item>
+      <b-list-group-item>Humidity: %</b-list-group-item>
+    </b-list-group>
+
     <!-- hero section of  right sidebar-->
-    <div class="right-sidebar">
+    <div class="right-sidebarr">
         <div
           class="carousel-wrapper"
           :style="{
@@ -30,14 +45,14 @@
             <h1>{{getConfigData?.flow?.carousel.defaultTitle}}</h1>
 
             <!-- carousel -->
-            <div class="carousel">
+            <!-- <div class="carousel">
               <VueSlickCarousel v-bind="settings">
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
                 <div>4</div>
               </VueSlickCarousel>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -47,26 +62,36 @@
 <script>
 // import store from '@/store';
 import VueSlickCarousel from 'vue-slick-carousel';
-// import 'vue-slick-carousel/dist/vue-slick-carousel.css';
-// optional style for arrows & dots
-// import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
-import 'vue-slick-carousel/slick/slick.css';
-import 'vue-slick-carousel/slick/slick-theme.css';
+import 'vue-slick-carousel/dist/vue-slick-carousel.css';
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+
+import { BListGroup, BListGroupItem } from 'bootstrap-vue';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: 'HomePage',
-  components: { VueSlickCarousel },
+  components: {
+    VueSlickCarousel,
+    BListGroup,
+    BListGroupItem
+  },
   //   store,
   data() {
     return {
       settings: {
-        dots: true,
-        dotsClass: 'slick-dots custom-dot-class',
+        // dots: true,
+        // dotsClass: 'slick-dots custom-dot-class',
         edgeFriction: 0.35,
-        infinite: false,
+        infinite: true,
+        // speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        autoplay: true,
         speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+        autoplaySpeed: 2500,
+        pauseOnHover: true,
+        draggable: true,
       }
     };
   },
@@ -101,7 +126,7 @@ export default {
 
 .right-sidebar{
 
-    position: relative;
+    /* position: relative; */
     /* right: 0; */
     background-color: red;
     width: 500px;
@@ -109,9 +134,9 @@ export default {
 
 }
 
-.right-sidebar .carousel-wrapper{
-    /* height:  50%; */
-}
+/* .right-sidebar .carousel-wrapper{
+    height:  50%;
+} */
 
 .right-sidebar .carousel-wrapper .carousel{
     /* height:  50%; */
