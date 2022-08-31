@@ -1,84 +1,120 @@
 <template>
-  <div class="launcher-wrapper">
-    <button
-        :style="{
-            'background-color': getLauncherStyle?.backgroundColor,
-            'color' : getLauncherStyle?.color,
-            'font-family' : getLauncherStyle?.fontFamily,
-            'font-size' : getLauncherStyle?.fontSize,
-            'font-weight' : '600',
-            'text-transform' : 'uppercase',
-            'padding' : '25px 57px'
-            }"
-      >
-        {{getConfigData?.launcher?.ctaText}}
+  <div>
+    <button :style="{
+      'background-color': getLauncherStyle?.backgroundColor,
+      'color': getLauncherStyle?.color,
+      'font-family': getLauncherStyle?.fontFamily,
+      'font-size': getLauncherStyle?.fontSize,
+      'font-weight': '600',
+      'text-transform': 'uppercase',
+      'padding': '25px 57px'
+    }">
+      {{ getConfigData?.launcher?.ctaText }}
     </button>
 
-    <!-- <VueSlickCarousel v-bind="settings">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-    </VueSlickCarousel> -->
+    <div>
+      <b-button @click="isSidebar = !isSidebar">Toggle Sidebar</b-button>
 
-    <b-list-group >
-      <b-list-group-item>Current Temparature: C</b-list-group-item>
-      <b-list-group-item>High: C</b-list-group-item>
-      <b-list-group-item>Low: C</b-list-group-item>
-      <b-list-group-item>Pressure: </b-list-group-item>
-      <b-list-group-item>Humidity: %</b-list-group-item>
-    </b-list-group>
+      <b-sidebar
+        :visible="isSidebar"
+        bg-variant="light"
+        width="500px"
+        right
+        no-header
+        class="sidebar"
+      >
+        <!-- header -->
+        <div :style="{
+          'background-color': getCarouselStyle?.backgroundColor,
+          'color': getCarouselStyle?.color,
+          'font-family': getCarouselStyle?.fontFamily,
+          'font-weight': '600',
+          'text-transform': 'uppercase',
+          'padding': '35px'
+        }">
+          <h2 :style="{
+            'background-color': getCarouselStyle?.backgroundColor,
+            'color': getCarouselStyle?.color,
+            // 'font-family': getCarouselStyle?.fontFamily,
+            'font-family': 'Bebas Neue',
+            // 'font-weight': '600',
+            'text-transform': 'uppercase',
+            // 'padding': '25px 57px'
+          }">
+            {{ getConfigData?.flow?.carousel?.defaultTitle }}
+          </h2>
+          <p>Total Item {{getConfigData?.flow?.carousel?.defaultContent.length}}</p>
+          <!-- carousel part -->
+          <div>
+            <vue-slick-carousel v-bind="settings">
 
-    <!-- hero section of  right sidebar-->
-    <div class="right-sidebarr">
-        <div
-          class="carousel-wrapper"
-          :style="{
-              'background-color': getCarouselStyle?.backgroundColor,
-              'color' : getCarouselStyle?.color,
-              'font-family' : getCarouselStyle?.fontFamily,
-              'font-size' : getLauncherStyle?.fontSize,
-              'font-weight' : '600',
-              'text-transform' : 'uppercase',
-              }"
-        >
-            <h1>{{getConfigData?.flow?.carousel.defaultTitle}}</h1>
+              <!-- <div
+                v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
+                :key="card.title"
+                class="px-3"
+              >
+                <b-img :src="card.imageUrl"/>
+              </div> -->
+            <div
+              v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
+              :key="card.title"
+              class="px-1 bg-danger rounded"
+            >
+              <img
+                :src="card.imageUrl"
+                alt="product"
+                class="img-fluid"
+              />
+            </div>
 
-            <!-- carousel -->
-            <!-- <div class="carousel">
-              <VueSlickCarousel v-bind="settings">
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-              </VueSlickCarousel>
-            </div> -->
+            <template #prevArrow="arrowOption">
+              <div class="custom-arrow">
+                hello
+                {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
+              </div>
+            </template>
+            </vue-slick-carousel>
+          </div>
         </div>
+        <!-- body part -->
+
+      </b-sidebar>
     </div>
 
   </div>
 </template>
 
 <script>
-import { BListGroup, BListGroupItem } from 'bootstrap-vue';
+
+import VueSlickCarousel from 'vue-slick-carousel';
+
+import {
+  BButton, BSidebar,
+  // BImg,
+  VBToggle,
+} from 'bootstrap-vue';
 
 export default {
   name: 'HomePage',
   components: {
-    BListGroup,
-    BListGroupItem
+    BButton,
+    BSidebar,
+    // BImg,
+    // BCard,
+    VueSlickCarousel
   },
+  directives: { 'b-toggle': VBToggle },
   data() {
     return {
+      isSidebar: false,
       settings: {
-        // dots: true,
-        // dotsClass: 'slick-dots custom-dot-class',
+        dots: true,
+        dotsClass: 'slick-dots custom-dot-class',
         edgeFriction: 0.35,
         infinite: true,
-        // speed: 500,
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
-        autoplay: true,
+        // autoplay: true,
         speed: 500,
         autoplaySpeed: 2500,
         pauseOnHover: true,
@@ -104,45 +140,47 @@ export default {
 </script>
 
 <style scoped>
+@import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css";
+@import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
-.launcher-wrapper{
-    height: 100vh;
-    display: grid;
-    place-items: center;
-}
-.launcher-wrapper button{
-    border: none;
-    outline: none;
+.carousel-wrapper {
+  background-color: red;
 }
 
-.right-sidebar{
-
-    /* position: relative; */
-    /* right: 0; */
-    background-color: red;
-    width: 500px;
-    height: 100vh;
-
+::v-deep .slick-prev:before {
+    content: '←';
 }
 
-/* .right-sidebar .carousel-wrapper{
-    height:  50%;
-} */
-
-.right-sidebar .carousel-wrapper .carousel{
-    /* height:  50%; */
-    background-color: blue;
-    /* width:100%; */
+::v-deep .slick-prev:before, .slick-next:before {
+    /* font-family: 'slick'; */
+    font-family: 'arial';
+    font-weight: bolder !important;
+    background-color: white;
+    font-size: 20px;
+    line-height: 1;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    padding: 5px;
+    /* opacity: 0.75; */
+    color: red !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* .welcome-message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ffda30;
-  font-size: 5rem;
-  margin: 0;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-} */
+.launcher-wrapper {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.launcher-wrapper button {
+  border: none;
+  outline: none;
+}
+
+::v-deep .sidebar .b-sidebar-body {
+  background-color: white;
+  /* border-left:1px solid rgba(0, 0, 0, .5) ; */
+}
 </style>
