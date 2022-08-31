@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "wc-build": "npm run build -- --target wc --inline-vue --name front-end-vue-assessment",
+    "wc-test": "cd dist && live-server --port=8080 --entry-file=./demo.html"
   },
   "dependencies": {
     "bootstrap": "^5.2.0",

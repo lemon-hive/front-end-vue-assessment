@@ -14,12 +14,12 @@
         {{getConfigData?.launcher?.ctaText}}
     </button>
 
-    <VueSlickCarousel v-bind="settings">
+    <!-- <VueSlickCarousel v-bind="settings">
       <div>1</div>
       <div>2</div>
       <div>3</div>
       <div>4</div>
-    </VueSlickCarousel>
+    </VueSlickCarousel> -->
 
     <b-list-group >
       <b-list-group-item>Current Temparature: C</b-list-group-item>
@@ -60,23 +60,14 @@
 </template>
 
 <script>
-// import store from '@/store';
-import VueSlickCarousel from 'vue-slick-carousel';
-import 'vue-slick-carousel/dist/vue-slick-carousel.css';
-import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css';
-
 import { BListGroup, BListGroupItem } from 'bootstrap-vue';
-// import 'bootstrap/dist/css/bootstrap.css';
-// import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 export default {
   name: 'HomePage',
   components: {
-    VueSlickCarousel,
     BListGroup,
     BListGroupItem
   },
-  //   store,
   data() {
     return {
       settings: {

@@ -1,20 +1,46 @@
 <template>
   <!-- <h1 class="welcome-message" id="welcome-message">Welcome Challenger!</h1> -->
-  <home-page />
+  <!-- <home-page /> -->
+
+  <div>
+
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+
+    <b-list-group >
+      <b-list-group-item>Current Temparature: C</b-list-group-item>
+      <b-list-group-item>High: C</b-list-group-item>
+      <b-list-group-item>Low: C</b-list-group-item>
+      <b-list-group-item>Pressure: </b-list-group-item>
+      <b-list-group-item>Humidity: %</b-list-group-item>
+    </b-list-group>
+
+  </div>
+
 </template>
 
 <script>
+
 import store from '@/store';
-import HomePage from './pages/Home.vue';
+import { BListGroup, BListGroupItem } from 'bootstrap-vue';
+// import 'bootstrap/dist/css/bootstrap.css';
+// import 'bootstrap-vue/dist/bootstrap-vue.css';
+// import HomePage from './pages/Home.vue';
 
 export default {
   name: 'App',
   store,
-  components: { HomePage },
+  // components: { HomePage },
+  components: {
+    BListGroup,
+    BListGroupItem
+  },
 };
 </script>
 
-<style scoped>
+<style>
+@import "./../node_modules/bootstrap/dist/css/bootstrap.css";
+@import "./../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
 /* .welcome-message {
   position: absolute;
   top: 50%;
