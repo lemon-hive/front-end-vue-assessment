@@ -30,7 +30,7 @@
           'font-family': getCarouselStyle?.fontFamily,
           'font-weight': '600',
           'text-transform': 'uppercase',
-          'padding': '35px'
+          'padding': '15px'
         }">
           <h2 :style="{
             'background-color': getCarouselStyle?.backgroundColor,
@@ -58,7 +58,7 @@
             <div
               v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
               :key="card.title"
-              class="px-1 bg-danger rounded"
+              class="px-1 img-wraper"
             >
               <img
                 :src="card.imageUrl"
@@ -143,29 +143,39 @@ export default {
 @import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css";
 @import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
-.carousel-wrapper {
-  background-color: red;
+::v-deep .slick-prev, ::v-deep .slick-next {
+    width: 20px;
+    height: 20px;
+    transform: translate(0, -50%);
+    background: white;
+    border-radius: 50%;
+}
+
+::v-deep .slick-prev {
+    margin-left: 18px;
+    z-index: 11;
+}
+
+::v-deep .slick-next {
+    margin-right: 18px;
+    z-index: 11;
 }
 
 ::v-deep .slick-prev:before {
-    content: '←';
+    content: '￩';
 }
 
-::v-deep .slick-prev:before, .slick-next:before {
-    /* font-family: 'slick'; */
-    font-family: 'arial';
-    font-weight: bolder !important;
-    background-color: white;
-    font-size: 20px;
-    line-height: 1;
-    width: 20px !important;
-    height: 20px !important;
-    border-radius: 50% !important;
-    padding: 5px;
-    /* opacity: 0.75; */
-    color: red !important;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+::v-deep .slick-next:before {
+    content: '￫';
+}
+
+::v-deep .slick-prev:before, ::v-deep .slick-next:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-bottom: 5px;
+    transform: translate(-50%, -50%);
+    color: rgb(199, 161, 122);
 }
 
 .launcher-wrapper {
@@ -182,5 +192,10 @@ export default {
 ::v-deep .sidebar .b-sidebar-body {
   background-color: white;
   /* border-left:1px solid rgba(0, 0, 0, .5) ; */
+}
+
+.img-wraper{
+  border-radius: 10px;
+  overflow: hidden;
 }
 </style>
