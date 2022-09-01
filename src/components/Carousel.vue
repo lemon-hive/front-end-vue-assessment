@@ -8,15 +8,18 @@
         'text-transform': 'uppercase',
         'padding': '15px'
     }">
-        <h2 :style="{
+        <h3 :style="{
             'background-color': getCarouselStyle?.backgroundColor,
             'color': getCarouselStyle?.color,
             'font-family': 'Bebas Neue',
             'text-transform': 'uppercase',
+            'margin':0,
         }">
             {{ getConfigData?.flow?.carousel?.defaultTitle }}
-        </h2>
-        <p>Total Item {{ getConfigData?.flow?.carousel?.defaultContent.length }}</p>
+        </h3>
+        <p style="font-family: Jost; font-size: 10px; font-weight: 500; margin-bottom: 10px;">
+          Total Item {{ getConfigData?.flow?.carousel?.defaultContent.length }}
+        </p>
 
         <!-- carousel part -->
         <div>
