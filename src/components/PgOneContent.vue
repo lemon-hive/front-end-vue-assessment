@@ -34,15 +34,18 @@
     </div>
 
     <div
-      variant="danger"
-      class="border text-danger border-1 d-flex justify-content-between align-items-center"
+      style="padding: 15px; border-top: 1px solid rgba(0, 0, 0, 0.08)"
+      class="d-flex justify-content-between align-items-center"
     >
       <b-button
         :style="{
           'background-color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
           color: getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
-          'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
-          'font-size': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
+          // 'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
+          // 'font-size': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
+          'font-family': 'Jost',
+          'font-size': '14px',
+          'font-weight': '600',
           border: 'none',
         }"
         @click="hidePgOne"
@@ -54,10 +57,13 @@
         :style="{
           'background-color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
           color: getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
-          'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
-          'font-size': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+          // 'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+          // 'font-size': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+          'font-family': 'Jost',
+          'font-size': '14px',
+          'font-weight': '500',
           border: 'none',
-          padding: '10px 30px',
+          padding: '5px 30px',
         }"
         @click="hidePgOne"
       >

@@ -28,14 +28,22 @@
       </div>
     </div>
 
-    <div variant="danger" class="border text-danger border-1 d-flex align-items-center">
+    <div
+      class="d-flex align-items-center"
+      style="padding: 15px; border-top: 1px solid rgba(0, 0, 0, 0.08)"
+    >
       <b-button
         :style="{
           'background-color': getConfigData?.flow?.pages[1]?.footer?.restartButton?.backgroundColor,
           color: getConfigData?.flow?.pages[1]?.footer?.restartButton?.color,
-          'font-family': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontFamily,
-          'font-size': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontSize,
-          border: 'none',
+          // 'font-family': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontFamily,
+          // 'font-size': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontSize,
+          'font-family': 'Jost',
+          'font-size': '14px',
+          'font-weight': '600',
+          padding: '5px 30px',
+          border: `1px solid ${getConfigData?.flow?.pages[1]?.footer?.restartButton?.borderColor}`,
+          // border: 'none',
         }"
         @click="showPgOne"
       >
@@ -46,10 +54,13 @@
         :style="{
           color: getConfigData?.flow?.pages[1]?.footer?.backButton?.backgroundColor,
           'background-color': getConfigData?.flow?.pages[1]?.footer?.backButton?.color,
-          'font-family': getConfigData?.flow?.pages[1]?.footer?.backButton?.fontFamily,
-          'font-size': getConfigData?.flow?.pages[1]?.footer?.backButton?.fontSize,
+          // 'font-family': getConfigData?.flow?.pages[1]?.footer?.backButton?.fontFamily,
+          // 'font-size': getConfigData?.flow?.pages[1]?.footer?.backButton?.fontSize,
+          'font-family': 'Jost',
+          'font-size': '14px',
+          'font-weight': '600',
+          padding: '5px 30px',
           border: 'none',
-          padding: '10px 30px',
           'margin-left': 'auto',
         }"
         @click="showPgOne"
@@ -61,10 +72,16 @@
         :style="{
           'background-color': getConfigData?.flow?.pages[1]?.footer?.nextButton?.backgroundColor,
           color: getConfigData?.flow?.pages[1]?.footer?.nextButton?.color,
-          'font-family': getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontFamily,
-          'font-size': getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontSize,
+          // 'font-family': getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontFamily,
+          // 'font-size': getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontSize,
+
+          'font-family': 'Jost',
+          'font-size': '14px',
+          'font-weight': '500',
+          'margin-left': '10px',
+          padding: '5px 30px',
           border: 'none',
-          padding: '10px 30px',
+
         }"
       >
         Submit
