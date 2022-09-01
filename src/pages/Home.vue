@@ -48,13 +48,6 @@
           <div>
             <vue-slick-carousel v-bind="settings">
 
-              <!-- <div
-                v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
-                :key="card.title"
-                class="px-3"
-              >
-                <b-img :src="card.imageUrl"/>
-              </div> -->
             <div
               v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
               :key="card.title"
@@ -67,58 +60,116 @@
               />
             </div>
 
-            <template #prevArrow="arrowOption">
-              <div class="custom-arrow">
-                hello
-                {{ arrowOption.currentSlide }}/{{ arrowOption.slideCount }}
-              </div>
-            </template>
             </vue-slick-carousel>
           </div>
         </div>
+
         <!-- body part -->
-        <div class="container">
-          <div class="row">
-            <div
-              v-for="card in  getConfigData?.flow?.pages[0].cards"
-              :key="card.title"
-              class="col-4 p-1">
-              <div class="p-3 grid-card d-flex justify-content-center align-items-center">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                  <img :src="card.icon" alt="">
-                  <p>{{card.title}}</p>
+
+        <main>
+          <div class="container">
+            <div class="row">
+              <div
+                v-for="card in  getConfigData?.flow?.pages[1].cards"
+                :key="card.title"
+                class="col-12 p-1">
+                <div class="p-3 grid-card">
+                  <div>
+                    <h3>{{card.title}}</h3>
+                    <p>{{card.description}}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <!-- footer part -->
-        <div variant="danger"
-        class="border text-danger border-1 d-flex justify-content-between align-items-center">
 
-          <b-button :style="{
-            'background-color':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
-            'color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
-            'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
-            'font-size':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
-            'border' : 'none'
-          }">
-          Skip
-          </b-button>
+          <div variant="danger"
+          class="border text-danger border-1 d-flex align-items-center">
 
-          <b-button :style="{
-            'background-color':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
-            'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
-            'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
-            'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
-            'border' : 'none',
-            'padding': '10px 30px'
-          }"
-          >
-          Next
-          </b-button>
+            <b-button :style="{
+              'background-color':getConfigData?.flow?.pages[1]?.footer
+              ?.restartButton?.backgroundColor,
+              'color': getConfigData?.flow?.pages[1]?.footer
+              ?.restartButton?.color,
+              'font-family': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontFamily,
+              'font-size':  getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontSize,
+              'border' : 'none'
+            }">
+              Restart
+            </b-button>
 
-        </div>
+            <b-button :style="{
+              'color':getConfigData?.flow?.pages[1]?.footer?.backButton?.backgroundColor,
+              'background-color': getConfigData?.flow?.pages[1]?.footer?.backButton?.color,
+              'font-family': getConfigData?.flow?.pages[1]?.footer?.backButton?.fontFamily,
+              'font-size':  getConfigData?.flow?.pages[1]?.footer?.backButton?.fontSize,
+              'border' : 'none',
+              'padding': '10px 30px',
+              'margin-left': 'auto'
+            }"
+            >
+              Back
+            </b-button>
+
+            <b-button :style="{
+              'background-color':getConfigData?.flow?.pages[1]?.footer?.nextButton?.backgroundColor,
+              'color': getConfigData?.flow?.pages[1]?.footer?.nextButton?.color,
+              'font-family': getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontFamily,
+              'font-size':  getConfigData?.flow?.pages[1]?.footer?.nextButton?.fontSize,
+              'border' : 'none',
+              'padding': '10px 30px'
+            }"
+            >
+              Submit
+            </b-button>
+
+          </div>
+        </main>
+
+        <!-- <main>
+          <div class="container">
+            <div class="row">
+              <div
+                v-for="card in  getConfigData?.flow?.pages[0].cards"
+                :key="card.title"
+                class="col-4 p-1">
+                <div class="p-3 grid-card d-flex justify-content-center align-items-center">
+                  <div class="d-flex flex-column justify-content-center align-items-center">
+                    <img :src="card.icon" alt="">
+                    <p>{{card.title}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div variant="danger"
+          class="border text-danger border-1 d-flex justify-content-between align-items-center">
+
+            <b-button :style="{
+              'background-color':getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
+              'color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
+              'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
+              'font-size':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
+              'border' : 'none'
+            }">
+              Skip
+            </b-button>
+
+            <b-button :style="{
+              'background-color':getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
+              'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
+              'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+              'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+              'border' : 'none',
+              'padding': '10px 30px'
+            }"
+            >
+              Next
+            </b-button>
+
+          </div>
+        </main> -->
 
       </b-sidebar>
     </div>
