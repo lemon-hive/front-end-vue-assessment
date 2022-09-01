@@ -4,12 +4,20 @@
         <div class="container">
             <div class="row">
                 <div
-                v-for="card in  getConfigData?.flow?.pages[1].cards"
+                v-for="card in  getPgTwoItems"
                 :key="card.title"
-                class="col-12 p-1">
+                class="col-12 p-1"
+                @click="$store.commit('toggleCartPgTwo', card)"
+                >
 
-            <div class="grid-card-wraper">
-                <div class="p-3 grid-card border">
+            <div
+            class="grid-card-wraper"
+            :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
+            >
+                <div
+                class="p-3 grid-card border"
+                :class="existsIncard(card) ? 'grid-card-style' : null"
+                >
                     <div>
                         <h3>{{card.title}}</h3>
                         <p>{{card.description}}</p>
@@ -91,6 +99,20 @@ export default {
       return this.$store.state.configData;
     },
 
+    getPgTwoItems() {
+      // return this.$store.state.configData;
+      const data = this.$store.getters.getPgTwoItems;
+      // console.log(data);
+      return data;
+    },
+
+    getPgTwoCardItems() {
+      // return this.$store.state.configData;
+      const data = this.$store.getters.getPgTwoCardItems;
+      // console.log(data);
+      return data;
+    },
+
     getLauncherStyle() {
       return this.$store?.state?.configData?.launcher;
     },
@@ -99,6 +121,15 @@ export default {
       return this.$store?.state?.configData?.flow?.carousel;
     }
   },
+
+  methods: {
+
+    existsIncard(product) {
+      const index = this.getPgTwoCardItems.findIndex((object) => object.id === product.id);
+      return index > -1;
+    },
+
+  }
 };
 
 </script>
@@ -112,14 +143,14 @@ export default {
   overflow: hidden;
 }
 
- ::v-deep .grid-card-wraper{
+ ::v-deep .grid-card-wraper-style{
   border-radius: 10px !important;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
- ::v-deep .grid-card-wraper:hover::before{
+ ::v-deep .grid-card-wraper-style::before{
   content: "";
   width: 15px;
   height: 15px;
@@ -131,11 +162,11 @@ export default {
   z-index: 1;
 }
 
- ::v-deep .grid-card:hover {
+ ::v-deep .grid-card-style {
   border: 2px solid #C7A17A !important;
 }
 
- ::v-deep .grid-card:hover::after {
+ ::v-deep .grid-card-style::after {
   content: "";
   background-color: #C7A17A;
   width: 90px;
@@ -146,7 +177,7 @@ export default {
   transform: rotate(45deg);
 }
 
- ::v-deep .grid-card:hover::before{
+ ::v-deep .grid-card-style::before{
   content: "✓";
   font-size: 10px;
   opacity: .6;

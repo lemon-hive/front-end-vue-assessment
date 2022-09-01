@@ -4,12 +4,20 @@
         <div class="container">
         <div class="row">
             <div
-            v-for="card in  getConfigData?.flow?.pages[0].cards"
-            :key="card.title"
-            class="col-4 p-1">
-            <div class="grid-card-wraper">
+              v-for="card in  getPgOneItems"
+              :key="card.title"
+              class="col-4 p-1"
+              @click="$store.commit('toggleCartPgOne', card)"
 
-            <div class="p-3 grid-card d-flex justify-content-center align-items-center">
+            >
+            <div
+            class="grid-card-wraper"
+            :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
+            >
+            <div
+              class="p-3 grid-card d-flex justify-content-center align-items-center"
+              :class="existsIncard(card) ? 'grid-card-style' : null"
+              >
               <!-- <div class="grid-card-content"> -->
 
                 <div class="d-flex flex-column justify-content-center align-items-center">
@@ -78,6 +86,20 @@ export default {
       return this.$store.state.configData;
     },
 
+    getPgOneItems() {
+      // return this.$store.state.configData;
+      const data = this.$store.getters.getPgOneItems;
+      // console.log(data);
+      return data;
+    },
+
+    getPgOneCardItems() {
+      // return this.$store.state.configData;
+      const data = this.$store.getters.getPgOneCardItems;
+      // console.log(data);
+      return data;
+    },
+
     getLauncherStyle() {
       return this.$store?.state?.configData?.launcher;
     },
@@ -86,6 +108,14 @@ export default {
       return this.$store?.state?.configData?.flow?.carousel;
     }
   },
+  methods: {
+
+    existsIncard(product) {
+      const index = this.getPgOneCardItems.findIndex((object) => object.id === product.id);
+      return index > -1;
+    },
+
+  }
 };
 </script>
 
@@ -98,14 +128,14 @@ export default {
   overflow: hidden;
 }
 
- ::v-deep .grid-card-wraper{
+ ::v-deep .grid-card-wraper-style{
   border-radius: 10px !important;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
- ::v-deep .grid-card-wraper:hover::before{
+ ::v-deep .grid-card-wraper-style::before{
   content: "";
   width: 15px;
   height: 15px;
@@ -117,11 +147,11 @@ export default {
   z-index: 1;
 }
 
- ::v-deep .grid-card:hover {
+ ::v-deep .grid-card-style {
   border: 2px solid #C7A17A !important;
 }
 
- ::v-deep .grid-card:hover::after {
+ ::v-deep .grid-card-style::after {
   content: "";
   background-color: #C7A17A;
   width: 90px;
@@ -132,7 +162,7 @@ export default {
   transform: rotate(45deg);
 }
 
- ::v-deep .grid-card:hover::before{
+ ::v-deep .grid-card-style::before{
   content: "✓";
   font-size: 10px;
   opacity: .6;
