@@ -149,20 +149,21 @@ export default {
     transform: translate(0, -50%);
     background: white;
     border-radius: 50%;
+    font-weight: normal;
+    z-index: 11;
 }
 
 ::v-deep .slick-prev {
     margin-left: 18px;
-    z-index: 11;
 }
 
 ::v-deep .slick-next {
     margin-right: 18px;
-    z-index: 11;
 }
 
 ::v-deep .slick-prev:before {
     content: '￩';
+    /* content: '￫'; */
 }
 
 ::v-deep .slick-next:before {
