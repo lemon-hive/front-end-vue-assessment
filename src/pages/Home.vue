@@ -77,6 +77,48 @@
           </div>
         </div>
         <!-- body part -->
+        <div class="container">
+          <div class="row">
+            <div
+              v-for="card in  getConfigData?.flow?.pages[0].cards"
+              :key="card.title"
+              class="col-4 p-1">
+              <div class="p-3 grid-card d-flex justify-content-center align-items-center">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                  <img :src="card.icon" alt="">
+                  <p>{{card.title}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- footer part -->
+        <div variant="danger"
+        class="border text-danger border-1 d-flex justify-content-between align-items-center">
+
+          <b-button :style="{
+            'background-color':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
+            'color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
+            'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
+            'font-size':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
+            'border' : 'none'
+          }">
+          Skip
+          </b-button>
+
+          <b-button :style="{
+            'background-color':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
+            'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
+            'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+            'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+            'border' : 'none',
+            'padding': '10px 30px'
+          }"
+          >
+          Next
+          </b-button>
+
+        </div>
 
       </b-sidebar>
     </div>
@@ -198,5 +240,10 @@ export default {
 .img-wraper{
   border-radius: 10px;
   overflow: hidden;
+}
+
+ ::v-deep .grid-card {
+  border: 1px solid rgba(0, 0, 0, .08) !important;
+  border-radius: 10px !important;
 }
 </style>
