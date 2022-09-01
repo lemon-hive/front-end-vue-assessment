@@ -1,7 +1,32 @@
 <template>
   <main>
-    <div class="container">
-      <div class="row" style="padding: 15px">
+    <div class="container" style="padding: 15px">
+      <div class="my-4">
+        <h2
+          :style="{
+            // 'background-color': getConfigData?.flow?.pages[0]?.backgroundColor,
+            // color: getCarouselStyle?.color,
+            'font-family': 'Bebas Neue',
+            'text-transform': 'uppercase',
+            margin: 0,
+          }"
+        >
+          {{ getConfigData?.flow?.pages[0].title.text }}
+        </h2>
+        <p
+          style="
+            font-family: Jost;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #c7a17a;
+          "
+        >
+          Total Item {{ getConfigData?.flow?.pages[0].description.text }}
+        </p>
+      </div>
+
+      <div class="row">
         <div
           v-for="card in getPgOneItems"
           :key="card.title"

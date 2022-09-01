@@ -121,7 +121,7 @@ export default {
 ::v-deep .slick-prev:before,
 ::v-deep .slick-next:before {
   position: absolute;
-  top: 50%;
+  top: 53%;
   left: 50%;
   padding-bottom: 5px;
   transform: translate(-50%, -50%);
