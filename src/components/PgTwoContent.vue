@@ -2,7 +2,8 @@
 
     <main>
         <div class="container">
-            <div class="row">
+
+          <div class="row" style="padding:15px">
                 <div
                 v-for="card in  getPgTwoItems"
                 :key="card.title"
@@ -15,12 +16,20 @@
             :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
             >
                 <div
-                class="p-3 grid-card border"
+                class="p-4 grid-card border"
                 :class="existsIncard(card) ? 'grid-card-style' : null"
                 >
-                    <div>
-                        <h3>{{card.title}}</h3>
-                        <p>{{card.description}}</p>
+                    <div class="pe-5 ">
+                        <h4
+                          style="font-family: 'Bebas Neue';
+                          font-size:22px; font-weight: 500;"
+                        >
+                          {{card.title}}
+                        </h4>
+                        <p
+
+                          style="font-size: 14px; margin: 0;"
+                        >{{card.description}}</p>
                     </div>
                 </div>
                 </div>

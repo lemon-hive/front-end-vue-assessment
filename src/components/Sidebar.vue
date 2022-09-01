@@ -11,15 +11,17 @@
     <!-- close button -->
     <b-button :style="{
         'background-color':getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
-        'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
-        'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+        // 'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
+        // 'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+        'color':'white',
         'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
         'border' : 'none',
-        'padding': '10px 30px',
+        'padding': '10px 35px',
+        'padding-bottom': '20px',
         'position':'absolute',
         'top':'50%',
         'right':'93%',
-        'transform':'rotate(90deg)',
+        'transform':'rotate(-90deg)',
         'z-index':-1,
 
     }"

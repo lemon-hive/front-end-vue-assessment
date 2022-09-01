@@ -2,7 +2,7 @@
 
     <main>
         <div class="container">
-        <div class="row">
+        <div class="row" style="padding:15px">
             <div
               v-for="card in  getPgOneItems"
               :key="card.title"
@@ -22,7 +22,11 @@
 
                 <div class="d-flex flex-column justify-content-center align-items-center">
                 <img :src="card.icon" alt="">
-                <p>{{card.title}}</p>
+                <p
+                style="font-size: 14px; font-weight: 500;
+                text-align: center; white-space: nowrap;">
+                  {{card.title}}
+                </p>
                 </div>
               <!-- </div> -->
             </div>

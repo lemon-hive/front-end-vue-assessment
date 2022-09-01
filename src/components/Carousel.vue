@@ -92,8 +92,8 @@ export default {
 @import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 ::v-deep .slick-prev, ::v-deep .slick-next {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     transform: translate(0, -50%);
     background: white;
     border-radius: 50%;
@@ -120,7 +120,7 @@ export default {
 
 ::v-deep .slick-prev:before, ::v-deep .slick-next:before {
     position: absolute;
-    top: 50%;
+    top: 53%;
     left: 50%;
     padding-bottom: 5px;
     transform: translate(-50%, -50%);
