@@ -25,8 +25,10 @@
                 <div
                     v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
                     :key="card.title"
-                    class="px-1 img-wraper">
-                    <img :src="card.imageUrl" alt="product" class="img-fluid" />
+                    class=" img-wraper"
+                    >
+                    <!-- hello -->
+                    <img class="px-1" :src="card.imageUrl" alt="product" />
                 </div>
 
             </vue-slick-carousel>
@@ -122,9 +124,18 @@ export default {
     color: rgb(199, 161, 122);
 }
 
-.img-wraper{
-  border-radius: 10px;
+:deep(.img-wraper){
+  /* border-radius: 10px; */
   overflow: hidden;
+}
+
+:deep(.img-wraper img){
+  object-fit: cover !important;
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
 }
 
 </style>

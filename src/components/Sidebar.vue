@@ -64,7 +64,7 @@ export default {
 
   data() {
     return {
-      pgOne: false
+      pgOne: true
     };
   },
 
