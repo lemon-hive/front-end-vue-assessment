@@ -23,6 +23,27 @@
         no-header
         class="sidebar"
       >
+        <!-- close button -->
+
+        <b-button :style="{
+          'background-color':getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
+          'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
+          'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+          'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+          'border' : 'none',
+          'padding': '10px 30px',
+          'position':'absolute',
+          'top':'50%',
+          'right':'93%',
+          'transform':'rotate(90deg)',
+          'z-index':-1,
+
+        }"
+        @click="isSidebar=false"
+        >
+          Close
+        </b-button>
+
         <!-- header -->
         <div :style="{
           'background-color': getCarouselStyle?.backgroundColor,
@@ -67,6 +88,22 @@
         <!-- body part -->
 
         <main>
+          <div class="container">
+            <div class="row">
+              <div
+                v-for="card in  getConfigData?.flow?.pages[1].cards"
+                :key="card.title"
+                class="col-12 p-1">
+                <div class="p-3 grid-card">
+                  <div>
+                    <h3>{{card.title}}</h3>
+                    <p>{{card.description}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div class="container">
             <div class="row">
               <div
