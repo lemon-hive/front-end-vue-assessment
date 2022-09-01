@@ -7,6 +7,8 @@
                 v-for="card in  getConfigData?.flow?.pages[1].cards"
                 :key="card.title"
                 class="col-12 p-1">
+
+            <div class="grid-card-wraper">
                 <div class="p-3 grid-card border">
                     <div>
                         <h3>{{card.title}}</h3>
@@ -14,6 +16,7 @@
                     </div>
                 </div>
                 </div>
+              </div>
             </div>
         </div>
 
@@ -105,6 +108,52 @@ export default {
  ::v-deep .grid-card {
   border: 1px solid rgba(0, 0, 0, .08) !important;
   border-radius: 10px !important;
+  position: relative;
+  overflow: hidden;
+}
+
+ ::v-deep .grid-card-wraper{
+  border-radius: 10px !important;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+ ::v-deep .grid-card-wraper:hover::before{
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  left: 96%;
+  bottom: 83%;
+  z-index: 1;
+}
+
+ ::v-deep .grid-card:hover {
+  border: 2px solid #C7A17A !important;
+}
+
+ ::v-deep .grid-card:hover::after {
+  content: "";
+  background-color: #C7A17A;
+  width: 90px;
+  height: 50px;
+  position: absolute;
+  left: 90%;
+  bottom: 80%;
+  transform: rotate(45deg);
+}
+
+ ::v-deep .grid-card:hover::before{
+  content: "✓";
+  font-size: 10px;
+  opacity: .6;
+  position: absolute;
+  left: 97%;
+  bottom: 85%;
+  z-index: 1;
 }
 
 </style>
