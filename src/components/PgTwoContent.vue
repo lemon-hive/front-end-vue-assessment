@@ -30,7 +30,10 @@
             'font-family': getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontFamily,
             'font-size':  getConfigData?.flow?.pages[1]?.footer?.restartButton?.fontSize,
             'border' : 'none'
-        }">
+        }"
+
+          @click="showPgOne"
+        >
             Restart
         </b-button>
 
@@ -43,6 +46,7 @@
             'padding': '10px 30px',
             'margin-left': 'auto'
         }"
+          @click="showPgOne"
         >
             Back
         </b-button>
@@ -74,6 +78,7 @@ import {
 export default {
   name: 'PgTwoContent',
   store,
+  props: ['showPgOne'],
   components: {
     BButton,
   },

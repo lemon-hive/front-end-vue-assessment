@@ -26,7 +26,9 @@
             'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
             'font-size':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
             'border' : 'none'
-        }">
+        }"
+          @click="hidePgOne"
+        >
             Skip
         </b-button>
 
@@ -38,6 +40,8 @@
             'border' : 'none',
             'padding': '10px 30px'
         }"
+
+          @click="hidePgOne"
         >
             Next
         </b-button>
@@ -58,6 +62,7 @@ import store from '@/store';
 export default {
   name: 'PgOneContent',
   store,
+  props: ['hidePgOne'],
   components: {
     BButton,
   },

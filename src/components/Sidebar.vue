@@ -31,9 +31,9 @@
     <!-- carousel -->
     <Carousel/>
     <!-- Pg one -->
-    <PgOneContent />
+    <PgOneContent v-if="pgOne" :showPgOne="showPgOne" :hidePgOne="hidePgOne" />
     <!-- Pg two -->
-    <PgTwoContent v-if="false"/>
+    <PgTwoContent v-if="!pgOne" :showPgOne="showPgOne" :hidePgOne="hidePgOne"/>
 
     </b-sidebar>
 </template>
@@ -62,6 +62,12 @@ export default {
     PgTwoContent
   },
 
+  data() {
+    return {
+      pgOne: true
+    };
+  },
+
   computed: {
     getConfigData() {
       return this.$store.state.configData;
@@ -75,6 +81,16 @@ export default {
       return this.$store?.state?.configData?.flow?.carousel;
     }
   },
+
+  methods: {
+    showPgOne() {
+      this.pgOne = true;
+    },
+
+    hidePgOne() {
+      this.pgOne = false;
+    }
+  }
 };
 </script>
 

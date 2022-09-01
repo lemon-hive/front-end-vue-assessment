@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="launcher-wrapper">
 
     <!-- launcher button -->
     <button :style="{
@@ -9,7 +9,9 @@
       'font-size': getLauncherStyle?.fontSize,
       'font-weight': '600',
       'text-transform': 'uppercase',
-      'padding': '25px 57px'
+      'padding': '25px 57px',
+      'border':'none',
+      'outline':'none',
     }"
       v-if="!isSidebar"
       @click="isSidebar = !isSidebar"
@@ -68,9 +70,9 @@ export default {
   place-items: center;
 }
 
-.launcher-wrapper button {
+/* .launcher-wrapper button {
   border: none;
   outline: none;
-}
+} */
 
 </style>
