@@ -1,47 +1,46 @@
 <template>
-
-    <div :style="{
+  <div
+    :style="{
+      'background-color': getCarouselStyle?.backgroundColor,
+      color: getCarouselStyle?.color,
+      'font-family': getCarouselStyle?.fontFamily,
+      'font-weight': '600',
+      'text-transform': 'uppercase',
+      padding: '15px',
+    }"
+  >
+    <h3
+      :style="{
         'background-color': getCarouselStyle?.backgroundColor,
-        'color': getCarouselStyle?.color,
-        'font-family': getCarouselStyle?.fontFamily,
-        'font-weight': '600',
+        color: getCarouselStyle?.color,
+        'font-family': 'Bebas Neue',
         'text-transform': 'uppercase',
-        'padding': '15px'
-    }">
-        <h3 :style="{
-            'background-color': getCarouselStyle?.backgroundColor,
-            'color': getCarouselStyle?.color,
-            'font-family': 'Bebas Neue',
-            'text-transform': 'uppercase',
-            'margin':0,
-        }">
-            {{ getConfigData?.flow?.carousel?.defaultTitle }}
-        </h3>
-        <p style="font-family: Jost; font-size: 10px; font-weight: 500; margin-bottom: 10px;">
-          Total Item {{ getConfigData?.flow?.carousel?.defaultContent.length }}
-        </p>
+        margin: 0,
+      }"
+    >
+      {{ getConfigData?.flow?.carousel?.defaultTitle }}
+    </h3>
+    <p style="font-family: Jost; font-size: 10px; font-weight: 500; margin-bottom: 10px">
+      Total Item {{ getConfigData?.flow?.carousel?.defaultContent.length }}
+    </p>
 
-        <!-- carousel part -->
-        <div>
-            <vue-slick-carousel v-bind="settings">
-
-                <div
-                    v-for="card in  getConfigData?.flow?.carousel?.defaultContent"
-                    :key="card.title"
-                    class=" img-wraper"
-                    >
-                    <!-- hello -->
-                    <img class="px-1" :src="card.imageUrl" alt="product" />
-                </div>
-
-            </vue-slick-carousel>
+    <!-- carousel part -->
+    <div>
+      <vue-slick-carousel v-bind="settings">
+        <div
+          v-for="card in getConfigData?.flow?.carousel?.defaultContent"
+          :key="card.title"
+          class="img-wraper"
+        >
+          <!-- hello -->
+          <img class="px-1" :src="card.imageUrl" alt="product" />
         </div>
+      </vue-slick-carousel>
     </div>
-
+  </div>
 </template>
 
 <script>
-
 import VueSlickCarousel from 'vue-slick-carousel';
 
 import store from '@/store';
@@ -50,7 +49,7 @@ export default {
   name: 'CarouselCom',
   store,
   components: {
-    VueSlickCarousel
+    VueSlickCarousel,
   },
   data() {
     return {
@@ -67,7 +66,7 @@ export default {
         autoplaySpeed: 2500,
         pauseOnHover: true,
         draggable: true,
-      }
+      },
     };
   },
 
@@ -82,57 +81,59 @@ export default {
 
     getCarouselStyle() {
       return this.$store?.state?.configData?.flow?.carousel;
-    }
+    },
   },
 };
 </script>
 
 <style scoped>
-@import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css";
-@import "../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+@import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css';
+@import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
-::v-deep .slick-prev, ::v-deep .slick-next {
-    width: 25px;
-    height: 25px;
-    transform: translate(0, -50%);
-    background: white;
-    border-radius: 50%;
-    font-weight: normal;
-    z-index: 11;
+::v-deep .slick-prev,
+::v-deep .slick-next {
+  width: 25px;
+  height: 25px;
+  transform: translate(0, -50%);
+  background: white;
+  border-radius: 50%;
+  font-weight: normal;
+  z-index: 11;
 }
 
 ::v-deep .slick-prev {
-    margin-left: 18px;
+  margin-left: 18px;
 }
 
 ::v-deep .slick-next {
-    margin-right: 18px;
+  margin-right: 18px;
 }
 
 ::v-deep .slick-prev:before {
-    content: '￩';
-    /* content: '￫'; */
+  content: '￩';
+  /* content: '￫'; */
 }
 
 ::v-deep .slick-next:before {
-    content: '￫';
+  content: '￫';
 }
 
-::v-deep .slick-prev:before, ::v-deep .slick-next:before {
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    padding-bottom: 5px;
-    transform: translate(-50%, -50%);
-    color: rgb(199, 161, 122);
+::v-deep .slick-prev:before,
+::v-deep .slick-next:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding-bottom: 5px;
+  transform: translate(-50%, -50%);
+  color: rgb(199, 161, 122);
 }
 
-:deep(.img-wraper){
+:deep(.img-wraper) {
   /* border-radius: 10px; */
   overflow: hidden;
 }
 
-:deep(.img-wraper img){
+:deep(.img-wraper img) {
   object-fit: cover !important;
   width: 100%;
   height: 150px;
@@ -140,5 +141,4 @@ export default {
   object-position: center;
   border-radius: 10px;
 }
-
 </style>

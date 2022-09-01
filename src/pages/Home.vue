@@ -1,18 +1,18 @@
 <template>
   <div class="launcher-wrapper">
-
     <!-- launcher button -->
-    <button :style="{
-      'background-color': getLauncherStyle?.backgroundColor,
-      'color': getLauncherStyle?.color,
-      'font-family': getLauncherStyle?.fontFamily,
-      'font-size': getLauncherStyle?.fontSize,
-      'font-weight': '600',
-      'text-transform': 'uppercase',
-      'padding': '25px 57px',
-      'border':'none',
-      'outline':'none',
-    }"
+    <button
+      :style="{
+        'background-color': getLauncherStyle?.backgroundColor,
+        color: getLauncherStyle?.color,
+        'font-family': getLauncherStyle?.fontFamily,
+        'font-size': getLauncherStyle?.fontSize,
+        'font-weight': '600',
+        'text-transform': 'uppercase',
+        padding: '25px 57px',
+        border: 'none',
+        outline: 'none',
+      }"
       v-if="!isSidebar"
       @click="isSidebar = !isSidebar"
     >
@@ -20,8 +20,7 @@
     </button>
 
     <!-- Sidebar -->
-    <Sidebar :isSidebar="isSidebar" :closeSidebar="closeSidebar"/>
-
+    <Sidebar :isSidebar="isSidebar" :closeSidebar="closeSidebar" />
   </div>
 </template>
 
@@ -34,7 +33,7 @@ export default {
 
   components: {
     // SidebarVue,
-    Sidebar
+    Sidebar,
   },
 
   data() {
@@ -53,13 +52,13 @@ export default {
 
     getCarouselStyle() {
       return this.$store?.state?.configData?.flow?.carousel;
-    }
+    },
   },
   methods: {
     closeSidebar() {
       this.isSidebar = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -74,5 +73,4 @@ export default {
   border: none;
   outline: none;
 } */
-
 </style>

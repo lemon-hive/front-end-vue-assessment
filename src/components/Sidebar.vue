@@ -1,51 +1,38 @@
 <template>
-    <b-sidebar
-    :visible="isSidebar"
-    bg-variant="light"
-    width="500px"
-    right
-    no-header
-    class="sidebar"
-    >
-
+  <b-sidebar :visible="isSidebar" bg-variant="light" width="500px" right no-header class="sidebar">
     <!-- close button -->
-    <b-button :style="{
-        'background-color':getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
+    <b-button
+      :style="{
+        'background-color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
         // 'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
         // 'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
-        'color':'white',
-        'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
-        'border' : 'none',
-        'padding': '10px 35px',
+        color: 'white',
+        'font-size': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+        border: 'none',
+        padding: '10px 35px',
         'padding-bottom': '20px',
-        'position':'absolute',
-        'top':'50%',
-        'right':'93%',
-        'transform':'rotate(-90deg)',
-        'z-index':-1,
-
-    }"
-    @click="closeSidebar"
+        position: 'absolute',
+        top: '50%',
+        right: '93%',
+        transform: 'rotate(-90deg)',
+        'z-index': -1,
+      }"
+      @click="closeSidebar"
     >
-        Close
+      Close
     </b-button>
 
     <!-- carousel -->
-    <Carousel/>
+    <Carousel />
     <!-- Pg one -->
     <PgOneContent v-if="pgOne" :showPgOne="showPgOne" :hidePgOne="hidePgOne" />
     <!-- Pg two -->
-    <PgTwoContent v-if="!pgOne" :showPgOne="showPgOne" :hidePgOne="hidePgOne"/>
-
-    </b-sidebar>
+    <PgTwoContent v-if="!pgOne" :showPgOne="showPgOne" :hidePgOne="hidePgOne" />
+  </b-sidebar>
 </template>
 
 <script>
-
-import {
-  BButton,
-  BSidebar,
-} from 'bootstrap-vue';
+import { BButton, BSidebar } from 'bootstrap-vue';
 
 import store from '@/store';
 import Carousel from './Carousel.vue';
@@ -61,12 +48,12 @@ export default {
     BSidebar,
     Carousel,
     PgOneContent,
-    PgTwoContent
+    PgTwoContent,
   },
 
   data() {
     return {
-      pgOne: true
+      pgOne: true,
     };
   },
 
@@ -81,7 +68,7 @@ export default {
 
     getCarouselStyle() {
       return this.$store?.state?.configData?.flow?.carousel;
-    }
+    },
   },
 
   methods: {
@@ -91,15 +78,13 @@ export default {
 
     hidePgOne() {
       this.pgOne = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-
-:deep(.b-sidebar-body){
+:deep(.b-sidebar-body) {
   background-color: white;
 }
-
 </style>

@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import store from '@/store';
 import HomePage from './pages/Home.vue';
 
@@ -24,10 +23,10 @@ export default {
 </script>
 
 <style>
-  @import "./../node_modules/bootstrap/dist/css/bootstrap.css";
-  @import "./../node_modules/bootstrap-vue/dist/bootstrap-vue.css";
+@import './../node_modules/bootstrap/dist/css/bootstrap.css';
+@import './../node_modules/bootstrap-vue/dist/bootstrap-vue.css';
 
-  .wraper{
-    font-family: 'Jost';
-  }
+.wraper {
+  font-family: 'Jost';
+}
 </style>

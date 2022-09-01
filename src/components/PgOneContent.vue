@@ -1,80 +1,74 @@
 <template>
-
-    <main>
-        <div class="container">
-        <div class="row" style="padding:15px">
-            <div
-              v-for="card in  getPgOneItems"
-              :key="card.title"
-              class="col-4 p-1"
-              @click="$store.commit('toggleCartPgOne', card)"
-
-            >
-            <div
+  <main>
+    <div class="container">
+      <div class="row" style="padding: 15px">
+        <div
+          v-for="card in getPgOneItems"
+          :key="card.title"
+          class="col-4 p-1"
+          @click="$store.commit('toggleCartPgOne', card)"
+        >
+          <div
             class="grid-card-wraper"
             :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
-            >
+          >
             <div
               class="p-3 grid-card d-flex justify-content-center align-items-center"
               :class="existsIncard(card) ? 'grid-card-style' : null"
-              >
+            >
               <!-- <div class="grid-card-content"> -->
 
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                <img :src="card.icon" alt="">
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <img :src="card.icon" alt="" />
                 <p
-                style="font-size: 14px; font-weight: 500;
-                text-align: center; white-space: nowrap;">
-                  {{card.title}}
+                  style="font-size: 14px; font-weight: 500; text-align: center; white-space: nowrap"
+                >
+                  {{ card.title }}
                 </p>
-                </div>
+              </div>
               <!-- </div> -->
             </div>
-
-            </div>
-            </div>
+          </div>
         </div>
-        </div>
+      </div>
+    </div>
 
-        <div variant="danger"
-        class="border text-danger border-1 d-flex justify-content-between align-items-center">
-
-        <b-button :style="{
-            'background-color':getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
-            'color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
-            'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
-            'font-size':  getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
-            'border' : 'none'
+    <div
+      variant="danger"
+      class="border text-danger border-1 d-flex justify-content-between align-items-center"
+    >
+      <b-button
+        :style="{
+          'background-color': getConfigData?.flow?.pages[0]?.footer?.skipButton?.backgroundColor,
+          color: getConfigData?.flow?.pages[0]?.footer?.skipButton?.color,
+          'font-family': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontFamily,
+          'font-size': getConfigData?.flow?.pages[0]?.footer?.skipButton?.fontSize,
+          border: 'none',
         }"
-          @click="hidePgOne"
-        >
-            Skip
-        </b-button>
+        @click="hidePgOne"
+      >
+        Skip
+      </b-button>
 
-        <b-button :style="{
-            'background-color':getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
-            'color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
-            'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
-            'font-size':  getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
-            'border' : 'none',
-            'padding': '10px 30px'
+      <b-button
+        :style="{
+          'background-color': getConfigData?.flow?.pages[0]?.footer?.nextButton?.backgroundColor,
+          color: getConfigData?.flow?.pages[0]?.footer?.nextButton?.color,
+          'font-family': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontFamily,
+          'font-size': getConfigData?.flow?.pages[0]?.footer?.nextButton?.fontSize,
+          border: 'none',
+          padding: '10px 30px',
         }"
-
-          @click="hidePgOne"
-        >
-            Next
-        </b-button>
-
-        </div>
-    </main>
-
+        @click="hidePgOne"
+      >
+        Next
+      </b-button>
+    </div>
+  </main>
 </template>
 
 <script>
-
-import {
-  BButton,
-} from 'bootstrap-vue';
+import { BButton } from 'bootstrap-vue';
 
 import store from '@/store';
 
@@ -110,37 +104,34 @@ export default {
 
     getCarouselStyle() {
       return this.$store?.state?.configData?.flow?.carousel;
-    }
+    },
   },
   methods: {
-
     existsIncard(product) {
       const index = this.getPgOneCardItems.findIndex((object) => object.id === product.id);
       return index > -1;
     },
-
-  }
+  },
 };
 </script>
 
 <style scoped>
-
- ::v-deep .grid-card {
-  border: 1px solid rgba(0, 0, 0, .08) !important;
+::v-deep .grid-card {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 10px !important;
   position: relative;
   overflow: hidden;
 }
 
- ::v-deep .grid-card-wraper-style{
+::v-deep .grid-card-wraper-style {
   border-radius: 10px !important;
   position: relative;
   width: 100%;
   height: 100%;
 }
 
- ::v-deep .grid-card-wraper-style::before{
-  content: "";
+::v-deep .grid-card-wraper-style::before {
+  content: '';
   width: 15px;
   height: 15px;
   background-color: white;
@@ -151,13 +142,13 @@ export default {
   z-index: 1;
 }
 
- ::v-deep .grid-card-style {
-  border: 2px solid #C7A17A !important;
+::v-deep .grid-card-style {
+  border: 2px solid #c7a17a !important;
 }
 
- ::v-deep .grid-card-style::after {
-  content: "";
-  background-color: #C7A17A;
+::v-deep .grid-card-style::after {
+  content: '';
+  background-color: #c7a17a;
   width: 90px;
   height: 50px;
   position: absolute;
@@ -166,14 +157,13 @@ export default {
   transform: rotate(45deg);
 }
 
- ::v-deep .grid-card-style::before{
-  content: "✓";
+::v-deep .grid-card-style::before {
+  content: '✓';
   font-size: 10px;
-  opacity: .6;
+  opacity: 0.6;
   position: absolute;
   left: 90%;
   bottom: 85%;
   z-index: 1;
 }
-
 </style>
