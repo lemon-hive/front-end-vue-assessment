@@ -33,16 +33,11 @@
           class="col-4 p-1"
           @click="$store.commit('toggleCartPgOne', card)"
         >
-          <div
-            class="grid-card-wraper"
-            :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
-          >
-            <div
-              class="p-3 grid-card d-flex justify-content-center align-items-center"
-              :class="existsIncard(card) ? 'grid-card-style' : null"
-            >
-              <!-- <div class="grid-card-content"> -->
-
+          <div :class="existsIncard(card) ? 'grid-card-wraper' : null">
+            <div :class="existsIncard(card) ? 'card-hover' : 'd-none'">
+              <p>✓</p>
+            </div>
+            <div class="p-3 grid-card d-flex justify-content-center align-items-center">
               <div class="d-flex flex-column justify-content-center align-items-center">
                 <img :src="card.icon" alt="" />
                 <p
@@ -51,7 +46,6 @@
                   {{ card.title }}
                 </p>
               </div>
-              <!-- </div> -->
             </div>
           </div>
         </div>
@@ -163,14 +157,47 @@ export default {
   overflow: hidden;
 }
 
-::v-deep .grid-card-wraper-style {
+::v-deep .grid-card-wraper {
+  position: relative;
+  border-radius: 10px !important;
+  overflow: hidden;
+  border: 2px solid #c7a17a !important;
+}
+
+:deep(.grid-card-wraper .card-hover) {
+  position: absolute;
+  background-color: #c7a17a;
+  width: 90px;
+  position: absolute;
+  right: -35px;
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 111;
+  padding: 5px 0;
+}
+
+:deep(.grid-card-wraper .card-hover p) {
+  margin: 0;
+  transform: translateY(3px);
+  transform: translateX(-2px);
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* ::v-deep .grid-card-wraper-style {
   border-radius: 10px !important;
   position: relative;
   width: 100%;
   height: 100%;
-}
+} */
 
-::v-deep .grid-card-wraper-style::before {
+/* ::v-deep .grid-card-wraper-style::before {
   content: '';
   width: 15px;
   height: 15px;
@@ -180,9 +207,9 @@ export default {
   left: 87%;
   bottom: 82%;
   z-index: 1;
-}
+} */
 
-::v-deep .grid-card-style {
+/* ::v-deep .grid-card-style {
   border: 2px solid #c7a17a !important;
 }
 
@@ -205,5 +232,5 @@ export default {
   left: 90%;
   bottom: 85%;
   z-index: 1;
-}
+} */
 </style>

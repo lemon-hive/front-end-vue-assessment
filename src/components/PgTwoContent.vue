@@ -32,14 +32,12 @@
           class="col-12 p-1"
           @click="$store.commit('toggleCartPgTwo', card)"
         >
-          <div
-            class="grid-card-wraper"
-            :class="existsIncard(card) ? 'grid-card-wraper-style' : null"
-          >
-            <div
-              class="p-4 grid-card border"
-              :class="existsIncard(card) ? 'grid-card-style' : null"
-            >
+          <div :class="existsIncard(card) ? 'grid-card-wraper' : null">
+            <div :class="existsIncard(card) ? 'card-hover' : 'd-none'">
+              <p>✓</p>
+            </div>
+
+            <div class="p-4 grid-card border">
               <div class="pe-5">
                 <h4 style="font-family: 'Bebas Neue'; font-size: 22px; font-weight: 500">
                   {{ card.title }}
@@ -176,6 +174,46 @@ export default {
   overflow: hidden;
 }
 
+::v-deep .grid-card-wraper {
+  position: relative;
+  border-radius: 10px !important;
+  overflow: hidden;
+  border: 2px solid #c7a17a !important;
+}
+
+:deep(.grid-card-wraper .card-hover) {
+  position: absolute;
+  background-color: #c7a17a;
+  width: 90px;
+  position: absolute;
+  right: -35px;
+  transform: rotate(45deg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 111;
+  padding: 5px 0;
+}
+
+:deep(.grid-card-wraper .card-hover p) {
+  margin: 0;
+  transform: translateY(3px);
+  transform: translateX(-2px);
+  width: 15px;
+  height: 15px;
+  background-color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* ::v-deep .grid-card {
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 10px !important;
+  position: relative;
+  overflow: hidden;
+}
+
 ::v-deep .grid-card-wraper-style {
   border-radius: 10px !important;
   position: relative;
@@ -218,5 +256,5 @@ export default {
   left: 97%;
   bottom: 85%;
   z-index: 1;
-}
+} */
 </style>
