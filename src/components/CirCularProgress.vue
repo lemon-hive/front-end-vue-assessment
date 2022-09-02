@@ -2,18 +2,23 @@
   <div class="skill" :style="cssProps">
     <div class="outer">
       <div class="inner">
-        <div id="number" ref="numb"></div>
+        <div id="number" ref="numb">{{getPgOneCardItems}}/{{getPgOneItems}}</div>
       </div>
     </div>
 
     <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+      <!-- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="10px" height="10px"> -->
       <defs>
         <linearGradient id="GradientColor">
-          <stop offset="0%" stop-color="#DA22FF" />
-          <stop offset="100%" stop-color="#9733EE" />
+          <!-- <stop offset="0%" stop-color="#DA22FF" />
+          <stop offset="100%" stop-color="#9733EE" /> -->
+
+          <stop offset="0%" stop-color="#C7A17A" />
+          <stop offset="100%" stop-color="#C7A17A" />
         </linearGradient>
       </defs>
-      <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+      <!-- <circle cx="80" cy="80" r="70" stroke-linecap="round" /> -->
+      <circle cx="30" cy="30" r="25" stroke-linecap="round" />
     </svg>
   </div>
 </template>
@@ -21,59 +26,70 @@
 <script>
 export default {
   name: 'SidebarCom',
-  props: ['percent'],
+  props: ['cartPercentige', 'getPgOneCardItems', 'getPgOneItems'],
   components: {},
   mounted() {
-    console.log('hello');
-
     // const numb = document.querySelector('.numb');
-
-    const { numb } = this.$refs;
-
-    let counter = 0;
-    // console.log(Math.floor((2 / 3) * 100));
-
-    setInterval(() => {
-      if (counter === Math.floor((2 / 3) * 100)) {
-        clearInterval();
-      } else {
-        counter += 1;
-        numb.textContent = `${counter}%`;
-      }
-    }, 2000 / 66);
+    // const { numb } = this.$refs;
+    // console.log(this.cartPercentige);
+    // let counter = 0;
+    // setInterval(() => {
+    //   if (counter === this.cartPercentige) {
+    //     clearInterval();
+    //   } else {
+    //     counter += 1;
+    //     numb.textContent = `${counter}%`;
+    //   }
+    // }, 2000 / 66);
   },
 
   computed: {
     cssProps() {
       return {
-        '--hover-font-size': `${this.baseFontSize * 2}em`,
-        '--animation-per': `${200}`,
+        '--animation-per': `${Math.floor((this.cartPercentige / 100) * 165)}`,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 .skill {
-  width: 160px;
-  height: 160px;
-  /*    background-color: cornflowerblue;*/
+  /* width: 160px;
+  height: 160px; */
+
+  width: 60px;
+  height: 60px;
+  /* background-color: cornflowerblue; */
   position: relative;
 }
 
 .outer {
-  height: 160px;
-  width: 160px;
+  /* height: 160px;
+  width: 160px; */
+
+  height: 60px;
+  width: 60px;
+
   border-radius: 50%;
-  /*  border: 2px solid orangered;*/
-  padding: 20px;
+  /* border: 2px solid orangered; */
+  padding: 5px;
+
   box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15), -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+  box-shadow: 3px 3px 5px -1px rgba(0, 0, 0, 0.15), -3px -3px 1px -1px rgba(255, 255, 255, 0.7);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .inner {
-  height: 120px;
-  width: 120px;
+  /* height: 120px;
+  width: 120px; */
+
+  height: 50px;
+  width: 50px;
+
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -86,24 +102,26 @@ export default {
 
 #number {
   font-weight: 600;
+  font-size: 10px;
   color: #555;
 }
 
 circle {
   fill: none;
   stroke: url(#GradientColor);
-  stroke-width: 20px;
+  stroke-width: 5px;
   stroke-dasharray: 450;
   stroke-dashoffset: 450;
   /* stroke-dashoffset: 50; */
   animation: anim 2s linear forwards;
-  /* transition: all 1s; */
 }
 
 @keyframes anim {
   100% {
-    /* stroke-dashoffset: 157.5; */
-    stroke-dashoffset: var(--animation-per);
+    /* stroke-dashoffset: var(--animation-per); */
+    /* stroke-dashoffset: calc (450 - var(--animation-per)); */
+    /* stroke-dashoffset: 295px; */
+    stroke-dashoffset: calc(450 - var(--animation-per));
   }
 }
 

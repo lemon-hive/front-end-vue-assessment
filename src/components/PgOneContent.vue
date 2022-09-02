@@ -22,11 +22,21 @@
             color: #c7a17a;
           "
         >
-          Total Item {{ getConfigData?.flow?.pages[0].description.text }}
+          {{ getConfigData?.flow?.pages[0].description.text }}
         </p>
       </div>
+      <div class="row content-wraper">
+        <!-- <div class="row position-relative"> -->
+        <div class="progress">
+          <!-- <div class="position-absolute right-0 end-0"> -->
+          <!-- :cartPercentige="Math.floor((getPgOneCardItems / getPgOneItems) * 100)" -->
+          <CirCularProgress
+            :cartPercentige="Math.floor((getPgOneCardItems.length / getPgOneItems.length) * 100)"
+            :getPgOneCardItems="getPgOneCardItems.length"
+            :getPgOneItems="getPgOneItems.length"
+          />
+        </div>
 
-      <div class="row">
         <div
           v-for="card in getPgOneItems"
           :key="card.title"
@@ -96,6 +106,7 @@
 import { BButton } from 'bootstrap-vue';
 
 import store from '@/store';
+import CirCularProgress from './CirCularProgress.vue';
 
 export default {
   name: 'PgOneContent',
@@ -103,6 +114,7 @@ export default {
   props: ['hidePgOne'],
   components: {
     BButton,
+    CirCularProgress,
   },
   computed: {
     getConfigData() {
@@ -150,6 +162,20 @@ export default {
 </script>
 
 <style scoped>
+:deep(.content-wraper) {
+  position: relative;
+}
+
+:deep(.content-wraper .progress) {
+  position: absolute;
+  width: 100px;
+  height: 65px;
+  bottom: 100%;
+  background-color: transparent;
+  right: 0;
+  z-index: 1;
+}
+
 ::v-deep .grid-card {
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 10px !important;
@@ -189,48 +215,4 @@ export default {
   text-align: center;
   font-size: 10px;
 }
-
-/* ::v-deep .grid-card-wraper-style {
-  border-radius: 10px !important;
-  position: relative;
-  width: 100%;
-  height: 100%;
-} */
-
-/* ::v-deep .grid-card-wraper-style::before {
-  content: '';
-  width: 15px;
-  height: 15px;
-  background-color: white;
-  border-radius: 50%;
-  position: absolute;
-  left: 87%;
-  bottom: 82%;
-  z-index: 1;
-} */
-
-/* ::v-deep .grid-card-style {
-  border: 2px solid #c7a17a !important;
-}
-
-::v-deep .grid-card-style::after {
-  content: '';
-  background-color: #c7a17a;
-  width: 90px;
-  height: 50px;
-  position: absolute;
-  left: 65%;
-  bottom: 80%;
-  transform: rotate(45deg);
-}
-
-::v-deep .grid-card-style::before {
-  content: '✓';
-  font-size: 10px;
-  opacity: 0.6;
-  position: absolute;
-  left: 90%;
-  bottom: 85%;
-  z-index: 1;
-} */
 </style>
