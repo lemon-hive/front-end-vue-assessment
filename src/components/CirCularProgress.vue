@@ -2,7 +2,7 @@
   <div class="skill" :style="cssProps">
     <div class="outer">
       <div class="inner">
-        <div id="number" ref="numb">{{getPgOneCardItems}}/{{getPgOneItems}}</div>
+        <div id="number" ref="numb">{{ getPgCardItems }}/{{ getPgItems }}</div>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
         </linearGradient>
       </defs>
       <!-- <circle cx="80" cy="80" r="70" stroke-linecap="round" /> -->
-      <circle cx="30" cy="30" r="25" stroke-linecap="round" />
+      <circle cx="30" cy="30" r="27" stroke-linecap="round" />
     </svg>
   </div>
 </template>
@@ -26,7 +26,7 @@
 <script>
 export default {
   name: 'SidebarCom',
-  props: ['cartPercentige', 'getPgOneCardItems', 'getPgOneItems'],
+  props: ['cartPercentige', 'getPgCardItems', 'getPgItems'],
   components: {},
   mounted() {
     // const numb = document.querySelector('.numb');
@@ -101,6 +101,7 @@ export default {
 }
 
 #number {
+  font-family: 'Jost';
   font-weight: 600;
   font-size: 10px;
   color: #555;

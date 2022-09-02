@@ -26,14 +26,11 @@
         </p>
       </div>
       <div class="row content-wraper">
-        <!-- <div class="row position-relative"> -->
         <div class="progress">
-          <!-- <div class="position-absolute right-0 end-0"> -->
-          <!-- :cartPercentige="Math.floor((getPgOneCardItems / getPgOneItems) * 100)" -->
           <CirCularProgress
             :cartPercentige="Math.floor((getPgOneCardItems.length / getPgOneItems.length) * 100)"
-            :getPgOneCardItems="getPgOneCardItems.length"
-            :getPgOneItems="getPgOneItems.length"
+            :getPgCardItems="getPgOneCardItems.length"
+            :getPgItems="getPgOneItems.length"
           />
         </div>
 
