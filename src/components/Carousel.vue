@@ -33,8 +33,20 @@
           class="img-wraper"
         >
           <!-- hello -->
-          <img class="px-1" :src="card.imageUrl" alt="product" />
-          <p>{{card.title}}</p>
+          <div
+            class="img-inner-wraper"
+            :style="{
+              'background-image': `linear-gradient(to bottom,rgba(0,0,0, 0),
+                rgba(0,0,0, .7)), url(${card.imageUrl})`,
+              'background-size': 'cover',
+              'background-repeat': 'no-repeat',
+              'background-position': 'center',
+              // 'margin': '0 20px'
+            }"
+          >
+            <!-- <img :src="card.imageUrl" alt="product" /> -->
+            <p>{{ card.title }}</p>
+          </div>
         </div>
       </vue-slick-carousel>
     </div>
@@ -132,17 +144,24 @@ export default {
 :deep(.img-wraper) {
   position: relative;
   overflow: hidden;
+  padding: 0 5px;
 }
 
-:deep(.img-wraper img) {
+:deep(.img-wraper .img-inner-wraper) {
+  border-radius: 10px;
+  width: 100%;
+  height: 150px;
+}
+
+/* :deep(.img-wraper img) {
   object-fit: cover !important;
   width: 100%;
   height: 150px;
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
-  /* background: linear-gradient(black, white); */
-}
+} */
+
 :deep(.img-wraper p) {
   position: absolute;
   bottom: 0;
@@ -151,6 +170,5 @@ export default {
   font-size: 12px;
   font-weight: 400;
   text-transform: capitalize;
-
 }
 </style>
