@@ -8,7 +8,10 @@
       'text-transform': 'uppercase',
       padding: '15px',
     }"
+    class="hello"
   >
+    <div class="scroll-top"><p>↑</p></div>
+    <!-- <div class="scroll-top"><p>￪</p></div> -->
     <h3
       :style="{
         'background-color': getCarouselStyle?.backgroundColor,
@@ -102,6 +105,32 @@ export default {
 <style scoped>
 @import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css';
 @import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css';
+
+.hello {
+  position: relative;
+}
+
+:deep(.scroll-top) {
+  position: absolute;
+  height: 25px;
+  width: 30px;
+  /* top: 10%; */
+  bottom: -26px;
+  right: 10px;
+  background-color: rgb(199, 161, 122);
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+  display: grid;
+  place-items: center;
+  /* z-index: 111111; */
+}
+
+:deep(.sroll-top p) {
+  margin: 0;
+  font-family: 'Jost';
+  font-size: 8px;
+  font-weight: 700;
+}
 
 ::v-deep .slick-prev,
 ::v-deep .slick-next {
