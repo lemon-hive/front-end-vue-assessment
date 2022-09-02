@@ -90,7 +90,7 @@
           border: 'none',
           padding: '5px 30px',
         }"
-        @click="hidePgOne"
+        @click="handleNext"
       >
         Next
       </b-button>
@@ -141,6 +141,15 @@ export default {
     existsIncard(product) {
       const index = this.getPgOneCardItems.findIndex((object) => object.id === product.id);
       return index > -1;
+    },
+
+    handleNext() {
+      if (this.getPgOneCardItems.length) {
+        this.hidePgOne();
+      } else {
+        // eslint-disable-next-line no-alert
+        window.alert('please select some items');
+      }
     },
   },
 };

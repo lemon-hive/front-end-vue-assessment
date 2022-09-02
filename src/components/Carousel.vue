@@ -34,6 +34,7 @@
         >
           <!-- hello -->
           <img class="px-1" :src="card.imageUrl" alt="product" />
+          <p>{{card.title}}</p>
         </div>
       </vue-slick-carousel>
     </div>
@@ -129,7 +130,7 @@ export default {
 }
 
 :deep(.img-wraper) {
-  /* border-radius: 10px; */
+  position: relative;
   overflow: hidden;
 }
 
@@ -140,5 +141,16 @@ export default {
   object-fit: cover;
   object-position: center;
   border-radius: 10px;
+  /* background: linear-gradient(black, white); */
+}
+:deep(.img-wraper p) {
+  position: absolute;
+  bottom: 0;
+  padding: 0 10px;
+  font-family: Jost;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: capitalize;
+
 }
 </style>

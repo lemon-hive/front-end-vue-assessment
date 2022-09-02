@@ -106,6 +106,7 @@
           padding: '5px 30px',
           border: 'none',
         }"
+        @click="handleSubmit"
       >
         Submit
       </b-button>
@@ -157,6 +158,11 @@ export default {
     existsIncard(product) {
       const index = this.getPgTwoCardItems.findIndex((object) => object.id === product.id);
       return index > -1;
+    },
+
+    handleSubmit() {
+      // eslint-disable-next-line no-alert
+      window.alert('submited successfully');
     },
   },
 };
