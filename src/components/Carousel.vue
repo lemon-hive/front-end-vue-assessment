@@ -8,7 +8,7 @@
       'text-transform': 'uppercase',
       padding: '15px',
     }"
-    class="hello"
+    class="carousel-wraper"
   >
     <div class="scroll-top"><p>↑</p></div>
     <!-- <div class="scroll-top"><p>￪</p></div> -->
@@ -106,7 +106,7 @@ export default {
 @import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel.css';
 @import '../../node_modules/vue-slick-carousel/dist/vue-slick-carousel-theme.css';
 
-.hello {
+.carousel-wraper {
   position: relative;
 }
 

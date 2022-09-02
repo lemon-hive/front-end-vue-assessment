@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div class="container" style="padding: 15px">
+    <div class="container" style="padding: 15px 25px">
       <div class="my-4">
         <h2
           :style="{
@@ -211,5 +211,6 @@ export default {
   border-radius: 50%;
   text-align: center;
   font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>
