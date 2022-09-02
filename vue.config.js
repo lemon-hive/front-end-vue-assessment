@@ -61,20 +61,20 @@ function enableShadowCss(config) {
     config.module.rule('stylus').oneOf('normal-modules').use('vue-style-loader'),
     config.module.rule('stylus').oneOf('normal').use('vue-style-loader'),
   ];
-  configs.forEach(c => c.tap(options => {
-    options.shadowMode = true;
-    return options;
-  }));
+  configs.forEach((c) =>
+    c.tap((options) => {
+      options.shadowMode = true;
+      return options;
+    })
+  );
 }
 
 module.exports = {
   // https://cli.vuejs.org/guide/webpack.html#chaining-advanced
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     enableShadowCss(config);
-  }
-}
-
-
+  },
+};
 
 // vue.config.js
 // module.exports = {

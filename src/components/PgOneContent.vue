@@ -173,14 +173,14 @@ export default {
   z-index: 1;
 }
 
-::v-deep .grid-card {
+:deep(.grid-card) {
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   border-radius: 10px !important;
   position: relative;
   overflow: hidden;
 }
 
-::v-deep .grid-card-wraper {
+:deep(.grid-card-wraper) {
   position: relative;
   border-radius: 10px !important;
   overflow: hidden;

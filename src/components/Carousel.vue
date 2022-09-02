@@ -132,8 +132,8 @@ export default {
   font-weight: 700;
 }
 
-::v-deep .slick-prev,
-::v-deep .slick-next {
+:deep(.slick-prev),
+:deep(.slick-next) {
   width: 25px;
   height: 25px;
   transform: translate(0, -50%);
@@ -143,25 +143,25 @@ export default {
   z-index: 11;
 }
 
-::v-deep .slick-prev {
+:deep(.slick-prev){
   margin-left: 18px;
 }
 
-::v-deep .slick-next {
+:deep(.slick-next) {
   margin-right: 18px;
 }
 
-::v-deep .slick-prev:before {
+:deep(.slick-prev:before){
   content: '￩';
   /* content: '￫'; */
 }
 
-::v-deep .slick-next:before {
+:deep(.slick-next:before){
   content: '￫';
 }
 
-::v-deep .slick-prev:before,
-::v-deep .slick-next:before {
+:deep(.slick-prev:before),
+:deep(.slick-next:before){
   position: absolute;
   top: 53%;
   left: 50%;
