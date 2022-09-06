@@ -195,6 +195,7 @@ export default {
   border-radius: 10px !important;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 :deep(.grid-card-wraper){
