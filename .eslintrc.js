@@ -15,6 +15,7 @@ module.exports = {
     'no-param-reassign': 'off',
     'comma-dangle': 'off',
     'function-paren-newline': 'off',
+    'vuejs-accessibility/click-events-have-key-events': 'off',
   },
   overrides: [
     {
