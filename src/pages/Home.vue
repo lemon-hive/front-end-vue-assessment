@@ -38,7 +38,7 @@ export default {
 
   data() {
     return {
-      isSidebar: true,
+      isSidebar: false,
     };
   },
   computed: {
